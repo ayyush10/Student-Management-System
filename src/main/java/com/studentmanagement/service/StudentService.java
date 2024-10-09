@@ -10,4 +10,10 @@ public interface StudentService {
     void markAttendance(String rollNumber, boolean isPresent);
     double getAttendancePercentage(String rollNumber);
     String calculatePerformanceGrade(String rollNumber);
+
+    Student getStudentById(int id);
+
+    void deleteStudent(int id);
+
+    void updateStudent(Student student);
 }

@@ -8,23 +8,6 @@ import javax.persistence.Table;
 @Table(name = "students")
 public class Student {
 
-    @Id
-    private int id;
-    private String name;
-    private String rollNumber;
-    private String email;
-
-    // Constructors, Getters, and Setters
-
-    public Student() {}
-
-    public Student(int id, String name, String rollNumber, String email) {
-        this.id = id;
-        this.name = name;
-        this.rollNumber = rollNumber;
-        this.email = email;
-    }
-
     public int getId() {
         return id;
     }
@@ -57,6 +40,45 @@ public class Student {
         this.email = email;
     }
 
+    @Id
+    private int id;
+    private String name;
+    private String rollNumber;
+    private String email;
+    private int totalClasses;  // New fields for attendance tracking
+    private int attendedClasses;
+
+    public Student() {}
+
+    public Student(int id, String name, String rollNumber, String email) {
+        this.id = id;
+        this.name = name;
+        this.rollNumber = rollNumber;
+        this.email = email;
+    }
+
+    // Getters and setters for new fields
+
+    public int getTotalClasses() {
+        return totalClasses;
+    }
+
+    public void setTotalClasses(int totalClasses) {
+        this.totalClasses = totalClasses;
+    }
+
+    public int getAttendedClasses() {
+        return attendedClasses;
+    }
+
+    public void setAttendedClasses(int attendedClasses) {
+        this.attendedClasses = attendedClasses;
+    }
+
     public void setAttendance(boolean isPresent) {
+        if (isPresent) {
+            attendedClasses++;
+        }
+        totalClasses++;
     }
 }

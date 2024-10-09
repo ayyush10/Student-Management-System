@@ -2,7 +2,6 @@ package com.studentmanagement.controller;
 
 import com.studentmanagement.model.Student;
 import com.studentmanagement.service.StudentService;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,12 +14,6 @@ import java.util.List;
 public class StudentController extends HttpServlet {
 
     private StudentService studentService;
-
-    @Override
-    public void init() throws ServletException {
-        studentService = new StudentService();
-    }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getServletPath();
@@ -81,8 +74,8 @@ public class StudentController extends HttpServlet {
 
         Student newStudent = new Student();
         newStudent.setName(name);
-        newStudent.setRollno(rollno);
-        studentService.saveStudent(newStudent);
+        newStudent.setRollNumber(rollno);
+        studentService.addStudent(newStudent);  // Use service layer instead of DAO directly
 
         response.sendRedirect("students");
     }
@@ -95,11 +88,12 @@ public class StudentController extends HttpServlet {
         Student student = new Student();
         student.setId(id);
         student.setName(name);
-        student.setRollno(rollno);
-        studentService.updateStudent(student);
+        student.setRollNumber(rollno);
+        studentService.updateStudent(student);  // Use service layer instead of DAO directly
 
         response.sendRedirect("students");
     }
+
 
     private void deleteStudent(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int id = Integer.parseInt(request.getParameter("id"));

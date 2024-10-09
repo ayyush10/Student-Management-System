@@ -9,25 +9,36 @@ import javax.persistence.Table;
 public class Performance {
 
     @Id
-    private int rollno;
+    private int id;
+    private int studentId;
     private String subject;
-    private int marks;
+    private double score;
 
-    public Performance() {
-    }
+    // Constructors, Getters, and Setters
 
-    public Performance(int rollno, String subject, int marks) {
-        this.rollno = rollno;
+    public Performance() {}
+
+    public Performance(int id, int studentId, String subject, double score) {
+        this.id = id;
+        this.studentId = studentId;
         this.subject = subject;
-        this.marks = marks;
+        this.score = score;
     }
 
-    public int getRollno() {
-        return rollno;
+    public int getId() {
+        return id;
     }
 
-    public void setRollno(int rollno) {
-        this.rollno = rollno;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
     public String getSubject() {
@@ -38,11 +49,11 @@ public class Performance {
         this.subject = subject;
     }
 
-    public int getMarks() {
-        return marks;
+    public double getScore() {
+        return score;
     }
 
-    public void setMarks(int marks) {
-        this.marks = marks;
+    public void setScore(double score) {
+        this.score = score;
     }
 }

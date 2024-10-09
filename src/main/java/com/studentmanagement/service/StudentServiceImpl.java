@@ -1,8 +1,7 @@
-package com.studentmanagement.service.impl;
+package com.studentmanagement.service;
 
 import com.studentmanagement.dao.StudentDAO;
 import com.studentmanagement.model.Student;
-import com.studentmanagement.service.StudentService;
 
 import java.util.List;
 
@@ -70,4 +69,20 @@ public class StudentServiceImpl implements StudentService {
         }
         return "N/A";
     }
+
+    @Override
+    public Student getStudentById(int id) {
+        return null;
+    }
+
+    @Override
+    public void deleteStudent(int id) {
+
+    }
+
+    @Override
+    public void updateStudent(Student student) {
+        studentDAO.update(student);  // Delegate to the DAO
+    }
+
 }
